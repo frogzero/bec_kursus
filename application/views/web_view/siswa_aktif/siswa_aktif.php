@@ -46,7 +46,10 @@
                       <td><?=$row->no_telp?></td>
                       <td><?=$row->tanggal_daftar?></td>
                
-                      <td><a class="btn btn-warning btn-flat" href="#"><i class="fa fa-lg fa-trash"></i></a>   <a class="btn btn-info btn-flat" href="<?=site_url()?>/admin/siswa_baru/konfirmasi_siswa/" data-toggle="tooltip" title="Konfirmasi Lulus !!!"><i class="fa fa-lg fa-check"></i></a></td>
+                      <td>
+                       <a class="btn btn-warning btn-flat" href="<?php echo site_url('admin/siswa_aktif/hapus/'.$row->id_siswa) ?>" onclick="return confirm('Yakin Hapus ?')"><i class="fa fa-lg fa-trash"></i></a>  
+                      <a class="btn btn-info btn-flat" href="<?php echo site_url('admin/siswa_aktif/form_ubah/'.$row->id_siswa) ?>"><i class="fa fa-lg fa-refresh"></i></a>
+                      </td>
                     </tr>
 
                   <?php } ?>

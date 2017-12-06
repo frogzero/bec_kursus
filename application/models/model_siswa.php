@@ -32,6 +32,20 @@ class Model_siswa extends CI_Model {
 			}
 	}
 
+	function tampil_siswa_ubaha($id_siswa)
+	{
+		$this->db->select('*'); 
+    	$this->db->from('siswa');
+    	$this->db->where('id_siswa', $id_siswa);
+		$hasil = $this->db->get();
+			if($hasil->num_rows()>0){
+			return $hasil->result();
+			}
+			else{
+			return array();
+			}
+	}
+
 
 	
 

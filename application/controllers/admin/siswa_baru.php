@@ -47,7 +47,6 @@ class Siswa_baru extends CI_Controller {
 		$jk = $this->input->post('jk');
 		$jenjang = $this->input->post('jenjang');
 		$data_siswa = array(
-			'id_program' => $program,
 			'nama' => $nama_siswa,
 			'password' => $password,
 			'ttl' => $tanggal_lahir,
@@ -56,11 +55,18 @@ class Siswa_baru extends CI_Controller {
 			'email' => $email,
 			'jk' => $jk,
 			'no_telp' => $notelp,
-			'jenjang' => $jenjang,
 			'status' => 'baru',
 			'tanggal_daftar' => $tgl_sekarang 
 			);
 		$this->model_web->simpan_siswa_baru($data_siswa);
+		redirect('admin/siswa_baru','refresh');
+	}
+
+		function hapus($id_siswa)
+	{
+		$this->db->where('id_siswa', $id_siswa);
+		$this->db->delete('siswa');
+		
 		redirect('admin/siswa_baru','refresh');
 	}
 

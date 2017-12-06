@@ -32,7 +32,8 @@
                       <td><?=$row->nama_paket?></td>
                       <td>
                       <a class="btn btn-warning btn-flat" href="<?php echo site_url('admin/program_kursus/hapus/'.$row->id_paket) ?>" onclick="return confirm('Yakin Hapus ?')"><i class="fa fa-lg fa-trash"></i></a>  
-                      <a class="btn btn-info btn-flat" href="<?php echo site_url('admin/program_kursus/form_ubah/'.$row->id_paket) ?>"><i class="fa fa-lg fa-refresh"></i></a></td>
+                      <a class="btn btn-info btn-flat" href="<?php echo site_url('admin/program_kursus/form_ubah/'.$row->id_paket) ?>"><i class="fa fa-lg fa-refresh"></i></a>
+                    </td>
                     </tr>
 
                   <?php } ?>

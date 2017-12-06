@@ -1,5 +1,5 @@
  <!-- Navbar-->
-      <header class="main-header hidden-print"><a class="logo" href="index.html">BEC KURSUS</a>
+      <header class="main-header hidden-print"><a class="logo" href="index.html">Bec Kursus</a>
         <nav class="navbar navbar-static-top">
           <!-- Sidebar toggle button--><a class="sidebar-toggle" href="#" data-toggle="offcanvas"></a>
           <!-- Navbar Right Menu-->

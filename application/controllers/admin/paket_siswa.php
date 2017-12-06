@@ -52,6 +52,13 @@ class Paket_siswa extends CI_Controller {
 		redirect(site_url('admin/paket_siswa'),'refresh');
 	}
 
+	public function hapus_paket_siswa($id_paket_siswa)
+	{
+		$this->db->where('id_paket_siswa', $id_paket_siswa);
+		$this->db->delete('paket_siswa');
+		redirect(site_url('admin/paket_siswa'),'refresh');
+	}
+
 }
 
 /* End of file model_paket_siswa.php */

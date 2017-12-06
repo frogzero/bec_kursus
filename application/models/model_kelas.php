@@ -24,6 +24,20 @@ function simpan($data)
 	$this->db->insert('kelas', $data);
 }
 
+function tampil_kelas_ubah($id_jadwal)
+	{
+		$this->db->select('*');
+		$this->db->from('jadwal');
+		$this->db->where('id_jadwal', $id_jadwal);
+
+		$hasil = $this->db->get();
+			if($hasil->num_rows()>0){
+			return $hasil->result();
+			}
+			else{
+			return array();
+			}
+	}
 	
 
 }

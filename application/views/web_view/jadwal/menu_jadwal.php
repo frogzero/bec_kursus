@@ -39,7 +39,9 @@
                       <td>
 
                       <a class="btn btn-primary btn-flat" href="<?=site_url('admin/jadwal/tambah/'.$row->id_kelas.'/'.$row->id_program)?>"><i class="fa fa-lg fa-plus"></i></a>
-                      <a class="btn btn-warning btn-flat" href="#"><i class="fa fa-lg fa-trash"></i></a>   <a class="btn btn-info btn-flat" href="#"><i class="fa fa-lg fa-refresh"></i></a></td>
+                       <a class="btn btn-warning btn-flat" href="<?php echo site_url('admin/jadwal/hapus/'.$row->id_kelas) ?>" onclick="return confirm('Yakin Hapus ?')"><i class="fa fa-lg fa-trash"></i></a>  
+
+                      </td>
                     </tr>
                   <?php } ?>
                   </tbody>
@@ -91,7 +93,12 @@
         <td><?=$data->nama?></td>
         <td><?=$data->nama_instruktur?></td>
         <td><?=$data->jam?></td>
-         <td><a class="btn btn-warning btn-flat" href="#"><i class="fa fa-lg fa-trash"></i></a>   <a class="btn btn-info btn-flat" href="#"><i class="fa fa-lg fa-refresh"></i></a></td>
+         <td>
+
+          <a class="btn btn-warning btn-flat" href="<?php echo site_url('admin/jadwal/hapus_jadwal/'.$row->id_jadwal) ?>" onclick="return confirm('Yakin Hapus ?')"><i class="fa fa-lg fa-trash"></i></a>  
+                      <a class="btn btn-info btn-flat" href="<?php echo site_url('admin/jadwal/form_ubah/'.$row->id_jadwal) ?>"><i class="fa fa-lg fa-refresh"></i></a>
+
+         </td>
       </tr>
       <?php } ?>
     </tbody>

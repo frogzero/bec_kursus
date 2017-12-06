@@ -51,6 +51,14 @@ class Jadwal extends CI_Controller {
 		$this->load->view('web_view/jadwal/tambah_kelas',$data);
 		$this->load->view('web_view/footer');	
 	}
+
+	public function hapus($id_kelas)
+	{
+		$this->model_jadwal->hapus_jadwal($id_kelas);
+		$this->model_jadwal->hapus_kelas($id_kelas);
+		redirect('admin/jadwal','refresh');
+	}
+
 	public function simpan_kelas()
 	{
 		$nama_kelas= $this->input->post('kelas');
@@ -78,6 +86,45 @@ class Jadwal extends CI_Controller {
 					 'hari'=>$hari);
 		$this->model_jadwal->simpan($data);
 		redirect('admin/jadwal','refresh');			
+	}
+
+		public function form_ubah($id_jadwal)
+	{
+		$data['tampil_siswa'] = $this->model_siswa->tampil_siswa();
+		$data['tampil_instruktur'] = $this->model_instruktur->tampil_instruktur();
+		$data['tampil_program'] = $this->model_program->tampil_program();
+		$data['tampil_kelas'] = $this->model_kelas->tampil_kelas_ubah($id_jadwal);
+		$this->load->view('web_view/index');
+		$this->load->view('web_view/header');
+		$this->load->view('web_view/navbar');
+		$this->load->view('web_view/jadwal/form_ubah',$data);
+		$this->load->view('web_view/footer');	
+	}
+
+	public function simpan_jadwal_ubah($id_jadwal)
+	{
+		$nama_kelas= $this->input->post('id_kelas');
+		$nama_siswa = $this->input->post('siswa');
+		$nama_instruktur = $this->input->post('instruktur');
+		$program = $this->input->post('nama_paket');
+		$jam = $this->input->post('jam');
+		$hari = $this->input->post('hari');
+		$data = array
+					('id_siswa' => $nama_siswa,
+					 'id_kelas' => $nama_kelas,
+					 'id_instruktur' => $nama_instruktur,
+					 'jam' => $jam,
+					 'hari'=>$hari);
+		
+		$this->db->where('id_jadwal', $id_jadwal);
+		$this->db->update('jadwal', $data);
+		redirect('admin/jadwal','refresh');			
+	}
+	public function hapus_jadwal($id_jadwal)
+	{
+		$this->db->where('id_jadwal', $id_jadwal);
+		$this->db->delete('jadwal');
+		redirect('admin/jadwal','refresh');	
 	}
 
 }

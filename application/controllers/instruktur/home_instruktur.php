@@ -29,6 +29,17 @@ class Home_instruktur extends CI_Controller {
 		$this->load->view('web_instruktur/footer');	
 	}
 
+	public function profil()
+	{
+		$id_instruktur = $this->session->userdata('id_instruktur');
+		$data['instruktur'] =$this->model_instruktur->tampil_instruktur_login();
+		$this->load->view('web_instruktur/index');
+		$this->load->view('web_instruktur/header');
+		$this->load->view('web_instruktur/navbar');
+		$this->load->view('web_instruktur/profil/menu_profil',$data);
+		$this->load->view('web_instruktur/footer');	
+	}
+
 }
 
 /* End of file home_admin.php */

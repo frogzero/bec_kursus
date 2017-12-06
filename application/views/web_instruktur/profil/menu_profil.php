@@ -8,9 +8,6 @@
               <li class="active"><a href="#">Data Table</a></li>
             </ul>
           </div>
-          <div>
-          <a class="btn btn-primary btn-flat" href="<?=site_url('admin/instruktur/tambah/')?>"><i class="fa fa-lg fa-plus"></i></a>
-         </div>
         </div>
         <div class="row">
           <div class="col-md-12">
@@ -28,7 +25,6 @@
                       <th>email</th>
                       <th>JK</th>
                       <th>no_hp</th>
-                      <th>foto</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -44,11 +40,6 @@
                       <td><?=$row->email_instruktur?></td>
                       <td><?=$row->jenis_kelamin_instruktur?></td>
                       <td><?=$row->no_hp_instruktur?></td>
-                      <td><?=$row->foto?></td>
-                      <td>
-                         <a class="btn btn-warning btn-flat" href="<?php echo site_url('admin/instruktur/hapus/'.$row->id_instruktur) ?>" onclick="return confirm('Yakin Hapus ?')"><i class="fa fa-lg fa-trash"></i></a>  
-                      <a class="btn btn-info btn-flat" href="<?php echo site_url('admin/instruktur/form_ubah/'.$row->id_instruktur) ?>"><i class="fa fa-lg fa-refresh"></i></a>
-                      </td>
                     </tr>
 
                   <?php } ?>

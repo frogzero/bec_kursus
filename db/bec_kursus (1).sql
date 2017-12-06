@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 28, 2017 at 04:56 PM
+-- Generation Time: Dec 06, 2017 at 05:38 AM
 -- Server version: 5.5.36
 -- PHP Version: 5.4.27
 
@@ -56,16 +56,16 @@ CREATE TABLE IF NOT EXISTS `instruktur` (
   `email_instruktur` varchar(30) NOT NULL,
   `jenis_kelamin_instruktur` enum('laki_laki','perempuan') NOT NULL,
   `no_hp_instruktur` varchar(30) NOT NULL,
-  `foto_instruktur` varchar(30) NOT NULL,
+  `foto` varchar(50) NOT NULL,
   PRIMARY KEY (`id_instruktur`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `instruktur`
 --
 
-INSERT INTO `instruktur` (`id_instruktur`, `nama_instruktur`, `password_instruktur`, `ttl_instruktur`, `alamat_instruktur`, `agama_instruktur`, `email_instruktur`, `jenis_kelamin_instruktur`, `no_hp_instruktur`, `foto_instruktur`) VALUES
-(2, 'arys', '213213', '2017-08-09', 'jogja', 'islam', 'arys@gmail.com', 'laki_laki', '0929292', '');
+INSERT INTO `instruktur` (`id_instruktur`, `nama_instruktur`, `password_instruktur`, `ttl_instruktur`, `alamat_instruktur`, `agama_instruktur`, `email_instruktur`, `jenis_kelamin_instruktur`, `no_hp_instruktur`, `foto`) VALUES
+(2, 'arys instruktur', '213213', '2017-08-09', 'jogja', 'islam', 'arys@gmail.com', 'laki_laki', '123456', '');
 
 -- --------------------------------------------------------
 
@@ -81,21 +81,7 @@ CREATE TABLE IF NOT EXISTS `jadwal` (
   `hari` varchar(10) NOT NULL,
   `id_kelas` int(11) NOT NULL,
   PRIMARY KEY (`id_jadwal`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
-
---
--- Dumping data for table `jadwal`
---
-
-INSERT INTO `jadwal` (`id_jadwal`, `id_siswa`, `id_instruktur`, `jam`, `hari`, `id_kelas`) VALUES
-(1, 1, 2, '10.00', 'Senin', 1),
-(2, 2, 2, '10:10', 'Rabu', 2),
-(3, 1, 2, '10:10', 'Selasa', 1),
-(4, 2, 2, '14:00', 'Selasa', 2),
-(5, 1, 2, '13.10', 'Selasa', 1),
-(6, 2, 2, '10:10', 'Selasa', 1),
-(7, 3, 2, '13.10', 'Rabu', 1),
-(8, 0, 0, '0', '0', 0);
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 -- --------------------------------------------------------
 
@@ -115,10 +101,7 @@ CREATE TABLE IF NOT EXISTS `kelas` (
 --
 
 INSERT INTO `kelas` (`id_kelas`, `nama_kelas`, `id_paket`) VALUES
-(1, 'Kelas A', 19),
-(2, 'Kelas B', 23),
-(3, 'Kelas C', 10),
-(4, 'Kelas D', 20);
+(1, 'Kelas A', 19);
 
 -- --------------------------------------------------------
 
@@ -130,7 +113,7 @@ CREATE TABLE IF NOT EXISTS `paket` (
   `id_paket` int(11) NOT NULL AUTO_INCREMENT,
   `nama_paket` varchar(100) NOT NULL,
   PRIMARY KEY (`id_paket`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
 
 --
 -- Dumping data for table `paket`
@@ -159,6 +142,27 @@ INSERT INTO `paket` (`id_paket`, `nama_paket`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `paket_siswa`
+--
+
+CREATE TABLE IF NOT EXISTS `paket_siswa` (
+  `id_paket_siswa` int(11) NOT NULL AUTO_INCREMENT,
+  `id_siswa` int(11) NOT NULL,
+  `id_program` int(11) NOT NULL,
+  `status_paket` enum('pending','gagal','aktif') NOT NULL,
+  PRIMARY KEY (`id_paket_siswa`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `paket_siswa`
+--
+
+INSERT INTO `paket_siswa` (`id_paket_siswa`, `id_siswa`, `id_program`, `status_paket`) VALUES
+(5, 2, 17, 'aktif');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `program`
 --
 
@@ -171,7 +175,7 @@ CREATE TABLE IF NOT EXISTS `program` (
   `lama` int(11) NOT NULL,
   `waktu` enum('pertemuan','bulan') NOT NULL,
   PRIMARY KEY (`id_program`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=24 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
 
 --
 -- Dumping data for table `program`
@@ -210,7 +214,6 @@ INSERT INTO `program` (`id_program`, `id_paket`, `jenis`, `kategori`, `biaya`, `
 
 CREATE TABLE IF NOT EXISTS `siswa` (
   `id_siswa` int(11) NOT NULL AUTO_INCREMENT,
-  `id_program` int(11) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `password` varchar(30) NOT NULL,
   `ttl` date NOT NULL,
@@ -219,10 +222,8 @@ CREATE TABLE IF NOT EXISTS `siswa` (
   `email` varchar(50) NOT NULL,
   `jk` enum('laki_laki','perempuan') NOT NULL,
   `no_telp` varchar(15) NOT NULL,
-  `jenjang` enum('SD','SMP','SMA/SMK','Umum') NOT NULL,
-  `status` enum('Baru','Aktif','Lulus') NOT NULL,
+  `status` enum('baru','aktif') NOT NULL,
   `tanggal_daftar` date NOT NULL,
-  `foto` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id_siswa`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
@@ -230,10 +231,8 @@ CREATE TABLE IF NOT EXISTS `siswa` (
 -- Dumping data for table `siswa`
 --
 
-INSERT INTO `siswa` (`id_siswa`, `id_program`, `nama`, `password`, `ttl`, `agama`, `alamat`, `email`, `jk`, `no_telp`, `jenjang`, `status`, `tanggal_daftar`, `foto`) VALUES
-(1, 19, 'Arys', 'adsas', '1992-01-22', 'kristen', 'asds', 'sda@sda', 'laki_laki', 'asd', 'SD', 'Aktif', '2017-08-10', NULL),
-(2, 19, 'eko', '123', '1998-04-14', 'islam', 'Jalan jalan', 'eko.rme@gmail.com', 'laki_laki', '1234567', 'Umum', 'Aktif', '2017-08-16', NULL),
-(3, 5, 'jon lenon', '12345678', '1998-03-16', 'islam', 'Jalan Jalan', 'eko@jon.vom', 'laki_laki', '1233434', 'SMA/SMK', 'Aktif', '2017-10-28', NULL);
+INSERT INTO `siswa` (`id_siswa`, `nama`, `password`, `ttl`, `agama`, `alamat`, `email`, `jk`, `no_telp`, `status`, `tanggal_daftar`) VALUES
+(2, 'eko', '123', '1998-04-14', 'islam', 'Jalan jalan', 'eko.rme@gmail.com', 'laki_laki', '1234567', 'aktif', '2017-08-16');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

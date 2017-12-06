@@ -21,6 +21,18 @@ class Model_jadwal extends CI_Model {
 			}
 	}
 
+	function hapus_jadwal($id_kelas)
+	{
+		$this->db->where('id_kelas', $id_kelas);
+		$this->db->delete('jadwal');
+	}
+
+	function hapus_kelas($id_kelas)
+	{
+		$this->db->where('id_kelas', $id_kelas);
+		$this->db->delete('kelas');
+	}
+
 	
 	function simpan($data)
 	{

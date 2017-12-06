@@ -23,7 +23,8 @@
                       <th>Nama siswa</th>
                       <th>Nama Paket</th>
                       <th>Status</th>
-                       <th>aksi</th>
+                      <th>Ubah</th>
+                      <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -40,6 +41,9 @@
                       <a class="btn btn-succes btn-flat" href="<?php echo site_url()?>/admin/paket_siswa/ubah_pending/<?php echo $rows->id_paket_siswa ?>"><i class="fa fa-lg fa-circle" data-toggle="tooltip" title="ubah Menjadi Pending !!!"></i></a>
                     <a class="btn btn-succes btn-flat" href="<?php echo site_url()?>/admin/paket_siswa/ubah_gagal/<?php echo $rows->id_paket_siswa ?>"><i class="fa fa-lg fa-trash" data-toggle="tooltip" title="ubah Menjadi GAGAL !!!"></i></a>  
                     <a class="btn btn-succes btn-flat" href="<?php echo site_url()?>/admin/paket_siswa/ubah_aktif/<?php echo $rows->id_paket_siswa ?>" data-toggle="tooltip" title="ubah Menjadi Aktif !!!"><i class="fa fa-lg fa-check"></i></a></td>
+                    <td>
+                       <a class="btn btn-succes btn-flat" href="<?php echo site_url()?>/admin/paket_siswa/hapus_paket_siswa/<?php echo $rows->id_paket_siswa ?>" data-toggle="tooltip" title="hapus Paket Siswa !!!"><i class="fa fa-lg fa-remove"></i></a>
+                    </td>
                     </tr>
               <?php } ?>
                   </tbody>

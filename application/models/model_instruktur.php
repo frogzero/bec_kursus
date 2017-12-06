@@ -16,6 +16,34 @@ class Model_instruktur extends CI_Model {
 				return array();
 				}
 	}
+function tampil_instruktur_login()
+	{
+
+		$this->db->select('*'); 
+	    $this->db->from('instruktur');
+	    $this->db->where('id_instruktur', $this->session->userdata('id_instruktur'));
+			$hasil = $this->db->get();
+				if($hasil->num_rows()>0){
+				return $hasil->result();
+				}
+				else{
+				return array();
+				}
+	}
+		function tampil_instruktur_ubah($id_instruktur)
+	{
+
+		$this->db->select('*'); 
+	    $this->db->from('instruktur');
+	    $this->db->where('id_instruktur', $id_instruktur);
+			$hasil = $this->db->get();
+				if($hasil->num_rows()>0){
+				return $hasil->result();
+				}
+				else{
+				return array();
+				}
+	}
 
 	function simpan_instruktur($data_instruktur)
 	{

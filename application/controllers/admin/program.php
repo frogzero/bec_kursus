@@ -30,6 +30,17 @@ class Program extends CI_Controller {
 		$this->load->view('web_view/footer');	
 	}
 
+		public function form_ubah($id_program)
+	{
+		$data['paket'] = $this->model_paket->tampil_program();
+		$data['paket_ubah'] = $this->model_program->tampil_program_ubah($id_program);
+		$this->load->view('web_view/index');
+		$this->load->view('web_view/header');
+		$this->load->view('web_view/navbar');
+		$this->load->view('web_view/program/form_ubah',$data);
+		$this->load->view('web_view/footer');	
+	}
+
 	public function simpan_program()
 	{
 		$id_program = $this->input->post('id_paket');
@@ -48,8 +59,34 @@ class Program extends CI_Controller {
 			);
 		$this->model_program->simpan_program($data_biaya);
 		redirect('admin/program','refresh');
+	}
 
+		public function simpan_ubah($id_program)
+	{
+		$id_programa = $this->input->post('id_paket');
+		$jenis = $this->input->post('jenis');
+		$kategori = $this->input->post('kategori');
+		$lama_program = $this->input->post('lama');
+		$waktu_program = $this->input->post('waktu');
+		$biaya_program = $this->input->post('biaya_program');
+		$data_biaya = array(
+			'id_paket' => $id_programa,
+			'jenis' => $jenis,
+			'kategori' => $kategori,
+			'biaya' => $biaya_program,
+			'lama' => $lama_program,
+			'waktu' => $waktu_program  
+			);
+		$this->db->where('id_program', $id_program);
+		$this->db->update('program', $data_biaya);
+		redirect('admin/program','refresh');
+	}
 
+	public function hapus($id_program)
+	{
+		$this->db->where('id_program', $id_program);
+		$this->db->delete('program');	
+		redirect('admin/program','refresh');
 	}
 
 

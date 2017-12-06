@@ -20,18 +20,15 @@ class home extends CI_Controller {
 	public function register()
 	{
 		$tgl_sekarang = date('Y-m-d');
-
 		$nama_siswa = $this->input->post('nama_siswa');
 		$password = $this->input->post('password');
 		$tanggal_lahir = $this->input->post('tanggal_lahir');
 		$email = $this->input->post('email');
 		$notelp = $this->input->post('notelp');
-		$program = $this->input->post('program');
 		$agama = $this->input->post('agama');
 		$alamat = $this->input->post('alamat');
 		$jk = $this->input->post('jk');
 		$data_siswa = array(
-			'id_program' => $program,
 			'nama' => $nama_siswa,
 			'password' => $password,
 			'ttl' => $tanggal_lahir,

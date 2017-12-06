@@ -23,6 +23,22 @@ function tampil_program()
 			}
 }
 
+function tampil_program_ubah($id_program)
+{
+
+	$this->db->select('*'); 
+    $this->db->from('program');
+    $this->db->where('id_program', $id_program); 
+		$hasil = $this->db->get();
+			if($hasil->num_rows()>0){
+			return $hasil->result();
+			}
+			else{
+			return array();
+			}
+}
+
+
 
 	
 

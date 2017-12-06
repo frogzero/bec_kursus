@@ -29,15 +29,7 @@
             <label class="control-label">PASSWORD</label>
             <input class="form-control" type="password" placeholder="Password" name="password"> 
           </div>
-          <div class="form-group">
-            <label class="control-label">Pilih Program</label>
-           <select class="form-control" name="program">
-           <?php foreach ($tampil_program as $key => $row): ?>
-              <option value="<?=$row->id_program?>"><?=$row->nama_paket?> / <?=$row->lama?> <?=$row->waktu?> </option>
-           <?php endforeach ?>
-            
-           </select>
-          </div>
+
           <div class="form-group">
             <label class="control-label">Tanggal Lahir</label>
             <input class="form-control" type="date" placeholder="Tanggal Lahir" autofocus name="tanggal_lahir">
@@ -71,15 +63,7 @@
             <label class="control-label">No Telpon</label>
             <input class="form-control" type="text" name="notelp" placeholder="Nomer Telpon">
           </div>
-           <div class="form-group">
-            <label class="control-label">Jenjang</label>
-            <select class="form-control" name="jenjang">
-             <option value="SD">SD</option>
-              <option value="SMP">SMP</option>
-              <option value="SMA/SMK">SMA / SMK</option>
-              <option value="Umum">Umum</option>
-           </select>
-          </div>
+      
 
           <div class="form-group btn-container">
             <button class="btn btn-primary btn-block">Daftar <i class="fa fa-sign-in fa-lg"></i></button>

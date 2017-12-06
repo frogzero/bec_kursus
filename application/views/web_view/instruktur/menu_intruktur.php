@@ -44,7 +44,7 @@
                       <td><?=$row->email_instruktur?></td>
                       <td><?=$row->jenis_kelamin_instruktur?></td>
                       <td><?=$row->no_hp_instruktur?></td>
-                      <td><?=$row->foto_instruktur?></td>
+                      <td><?=$row->foto?></td>
                       <td><a class="btn btn-warning btn-flat" href="#"><i class="fa fa-lg fa-trash"></i></a>   <a class="btn btn-info btn-flat" href="#"><i class="fa fa-lg fa-refresh"></i></a></td>
                     </tr>
 

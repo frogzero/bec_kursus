@@ -40,7 +40,10 @@
                       <td><?=$row->biaya?></td>
                       <td><?=$row->lama?></td>
                       <td><?=$row->waktu?></td>
-                      <td><a class="btn btn-warning btn-flat" href="#"><i class="fa fa-lg fa-trash"></i></a>   <a class="btn btn-info btn-flat" href="#"><i class="fa fa-lg fa-refresh"></i></a></td>
+                      <td>
+                        <a class="btn btn-warning btn-flat" href="<?php echo site_url('admin/program/hapus/'.$row->id_program) ?>" onclick="return confirm('Yakin Hapus ?')"><i class="fa fa-lg fa-trash"></i></a>  
+                      <a class="btn btn-info btn-flat" href="<?php echo site_url('admin/program/form_ubah/'.$row->id_program) ?>"><i class="fa fa-lg fa-refresh"></i></a>
+                    </td>
                     </tr>
 
                   <?php } ?>

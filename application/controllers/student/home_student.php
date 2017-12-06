@@ -60,7 +60,7 @@ class Home_student extends CI_Controller {
 				echo 'alert("paket berhasil dibeli, silahkan melakukan pembayaran untuk aktivasi !!!!")';
 				echo '</script>';
 				echo '<script type="text/javascript">';    
-				echo 'window.location.assign("'.site_url().'")'; 
+				echo 'window.location.assign("'.site_url('student/home_student/beli_paket').'")'; 
 				echo '</script>';
 	}
 

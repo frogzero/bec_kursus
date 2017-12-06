@@ -41,6 +41,12 @@ class home extends CI_Controller {
 			'tanggal_daftar' => $tgl_sekarang 
 			);
 		$this->model_web->simpan_siswa_baru($data_siswa);
+		echo '<script language="javascript">';
+								echo 'alert("Daftar berhasil silahkan login !!!!")';
+								echo '</script>';
+								echo '<script type="text/javascript">';    
+							    echo 'window.location.assign("'.site_url().'")'; 
+							    echo '</script>';
 	}
 
 	public function menu_awal()
